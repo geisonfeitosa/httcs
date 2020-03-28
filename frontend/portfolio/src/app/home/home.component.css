@@ -1,0 +1,50 @@
+.image-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center {
+    justify-content: center;
+}
+
+footer {
+    color: white;
+    height: 50px;
+    padding-top: 10px;
+}
+
+.navbar {
+    background-color: #212529 !important;
+}
+
+.intro-heading {
+    margin: 0px !important;
+}
+
+@media(max-width:991px) {
+    .navbar {
+        height: 70px !important;
+        display: flex;
+        flex-wrap: wrap;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        padding: 0 1rem !important;
+    }
+
+    .collapse, .navbar-collapse {
+        background-color: #fed136;
+    }
+}
+
+@media(min-width:992px) {
+    .navbar {
+        height: 60px !important;
+    }
+}
+
+.bg-white {
+    background-color: white;
+}
