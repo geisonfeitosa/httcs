@@ -48,4 +48,12 @@ export class MenuComponent implements OnInit {
     this.novo = true;
   }
 
+  validarCampos() {
+    if(this.portfolio.titulo && this.portfolio.descricao && this.portfolio.linkRepositorio && this.portfolio.linkAplicacao) {
+      return true;
+    } else {
+      return  false;
+    }
+  }
+
 }

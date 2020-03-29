@@ -39,8 +39,10 @@
                             <td>{{p.titulo}}</td>
                             <td style="width: 200px">
                                 <div class="form-inline">
-                                    <button type="submit" class="btn btn-outline btn-list" (click)="editar(p)">Editar</button>&nbsp;&nbsp;
-                                    <button type="submit" class="btn btn-primary btn-list" (click)="delete(p.id)">Excluir</button>
+                                    <button type="submit" class="btn btn-outline btn-list"
+                                        (click)="editar(p)">Editar</button>&nbsp;&nbsp;
+                                    <button type="submit" class="btn btn-primary btn-list"
+                                        (click)="delete(p.id)">Excluir</button>
                                 </div>
                             </td>
                         </tr>
@@ -54,27 +56,37 @@
                 </div>
                 <div class="form-group">
                     <label>Descrição</label>
-                    <textarea class="form-control" rows="3" name="descricao" [(ngModel)]="portfolio.descricao"></textarea>
+                    <textarea class="form-control" rows="3" name="descricao"
+                        [(ngModel)]="portfolio.descricao"></textarea>
                 </div>
                 <form>
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label>Link Repositório</label>
-                                <input type="email" class="form-control" name="linkRepositorio" [(ngModel)]="portfolio.linkRepositorio">
+                                <input type="email" class="form-control" name="linkRepositorio"
+                                    [(ngModel)]="portfolio.linkRepositorio">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label>Link Aplicação</label>
-                                <input type="email" class="form-control" name="linkAplicacao" [(ngModel)]="portfolio.linkAplicacao">
+                                <input type="email" class="form-control" name="linkAplicacao"
+                                    [(ngModel)]="portfolio.linkAplicacao">
                             </div>
                         </div>
                     </div>
                 </form>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Imagem</label>
+                    <input type="file" class="form-control-file" name="imagem" [(ngModel)]="portfolio.imagem">
+                </div>
                 <div class="form-inline">
                     <button type="submit" class="btn btn-outline" (click)="novo=false">Cancelar</button>&nbsp;&nbsp;
-                    <button type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
+                    <button type="submit" class="btn btn-primary" (click)="save()" disabled
+                    *ngIf="!validarCampos()">Salvar</button>
+                    <button type="submit" class="btn btn-primary" (click)="save()"
+                    *ngIf="validarCampos()">Salvar</button>
                 </div>
             </form>
         </div>

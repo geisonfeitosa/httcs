@@ -18,6 +18,12 @@
     color: #fed136 !important;
 }
 
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: #685c31 !important;
+    border-color: #685c31  !important;
+}
+
 h2 {
     color: #fed136;
     display: flex;
@@ -45,8 +51,16 @@ label {
     color: #ffffff;
 }
 
-.novo {
-    padding: 80px;
+@media(max-width:899px) {
+    .novo {
+        padding: 5px 20px 0px 20px;
+    }
+}
+
+@media(min-width:900px) {
+    .novo {
+        padding: 5px 80px 0px 80px;
+    }
 }
 
 .list {
