@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: false,
+  apiUrl: 'https://httcs.herokuapp.com/rest'
 };

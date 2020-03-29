@@ -8,14 +8,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { PortfoliosComponent } from './portfolios/portfolios.component';
+import { MenuComponent } from './menu/menu.component';
+import { PortfoliosService } from './services/portfolios.service'
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    PortfoliosComponent
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,9 @@ import { PortfoliosComponent } from './portfolios/portfolios.component';
     FormsModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [
+    PortfoliosService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
