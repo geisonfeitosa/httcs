@@ -8,7 +8,7 @@ const SERVICE = environment.apiUrl;
 @Injectable()
 export class PortfoliosService {
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     save(portfolio): Observable<any> {
         return this.http.post(`${SERVICE}/projeto`, portfolio);
@@ -17,5 +17,9 @@ export class PortfoliosService {
     listPortfolios(): Observable<any> {
         return this.http.get(`${SERVICE}/projeto`);
     }
-    
+
+    public delete(id) {
+        return this.http.delete(`${SERVICE}/projeto/${id}`);
+    }
+
 }
