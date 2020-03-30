@@ -14,6 +14,7 @@ import { AuthGuard } from './auth.guard';
 import { AuthInterceptor } from './http-client-interceptor';
 import { LoginService } from './services/login.service';
 import { QuemSomosService } from './services/quemSomos.service';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -28,6 +29,7 @@ import { QuemSomosService } from './services/quemSomos.service';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    CommonModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [

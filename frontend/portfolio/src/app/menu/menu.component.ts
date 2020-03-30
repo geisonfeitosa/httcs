@@ -35,16 +35,22 @@ export class MenuComponent implements OnInit {
   salvando = false;
 
   ngOnInit(): void {
-    this.loginService.validar(localStorage.getItem('access_token')).subscribe(r=> {
-      if(!r) {
-        localStorage.clear();
-        this.router.navigate(['/login']);
-      } else {
-        this.list();
-        this.novoPortfolio = false;
-        this.novoQuemSomos = false;
-      }
-    })
+    let token = localStorage.getItem('access_token');
+    if(token != null && token != '') {
+      this.loginService.validar(token).subscribe(r=> {
+        if(!r) {
+          localStorage.removeItem('access_token');
+          this.router.navigate(['/login']);
+        } else {
+          this.list();
+          this.novoPortfolio = false;
+          this.novoQuemSomos = false;
+        }
+      });
+    } else {
+      localStorage.removeItem('access_token');
+      this.router.navigate(['/login']);
+    }
   }
 
   list() {
@@ -143,21 +149,19 @@ export class MenuComponent implements OnInit {
   }
 
   validarCamposPortfolio() {
-    return true;
-    // if(this.portfolio.titulo && this.portfolio.descricao && this.portfolio.linkRepositorio && this.portfolio.linkAplicacao) {
-    //   return true;
-    // } else {
-    //   return  false;
-    // }
+    if(this.portfolio.titulo && this.portfolio.descricao && this.portfolio.imagem) {
+      return true;
+    } else {
+      return  false;
+    }
   }
 
   validarCamposQuemSomos() {
-    return true;
-    // if(this.quemSomos.titulo && this.quemSomos.ano && this.quemSomos.descricao) {
-    //   return true;
-    // } else {
-    //   return  false;
-    // }
+    if(this.quemSomos.titulo && this.quemSomos.ano && this.quemSomos.descricao && this.quemSomos.imagem) {
+      return true;
+    } else {
+      return  false;
+    }
   }
 
   closeModal() {

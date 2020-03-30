@@ -26,6 +26,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  home() {
+    this.router.navigate(['/']);
+  }
+
   logar() {
     localStorage.removeItem('access_token');
     this.loginService.login(this.usuario).subscribe(r=> {

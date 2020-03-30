@@ -9,6 +9,10 @@
   background-color: #212529;
 }
 
+a {
+  cursor:pointer;
+}
+
 @-webkit-keyframes fadeInDown {
   0% {
     opacity: 0;
