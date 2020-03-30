@@ -15,18 +15,20 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) { }
   usuario = {email:'', senha:''};
+  lembrarDados = false;
 
   ngOnInit() {
-    console.log(localStorage.getItem('access_token'));
+    this.usuario.email = localStorage.getItem('email');
+    this.usuario.senha = localStorage.getItem('senha');
+    this.lembrarDados = (this.usuario.email != null && this.usuario.senha != null) ? true : false;
     if(localStorage.getItem('access_token') != null) {
       this.router.navigate(['/menu']);
     }
   }
 
   logar() {
-    localStorage.clear();
+    localStorage.removeItem('access_token');
     this.loginService.login(this.usuario).subscribe(r=> {
-      console.log(r.access_token);
       if(r.access_token != undefined) {
         localStorage.setItem('access_token', r.access_token);
         this.usuario = {email:'', senha:''};
@@ -37,6 +39,21 @@ export class LoginComponent implements OnInit {
         document.getElementById('msgC').innerHTML = "Email ou senha incorretos.";
       }
     })
+  }
+
+  lembrar() {
+    this.lembrarDados = !this.lembrarDados;
+    if(this.lembrarDados) {
+      localStorage.setItem('email', this.usuario.email);
+      localStorage.setItem('senha', this.usuario.senha);
+    } else {
+      localStorage.removeItem('email');
+      localStorage.removeItem('senha');
+    }
+  }
+
+  closeModal() {
+    $('#myModal').modal('hide');
   }
 
 }

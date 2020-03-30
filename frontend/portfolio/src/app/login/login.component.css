@@ -1,122 +1,119 @@
 .wrapper {
-    display: flex;
-    align-items: center;
-    flex-direction: column; 
-    justify-content: center;
-    width: 100%;
-    min-height: 100%;
-    padding: 150px 0;
-    background-color: #212529;
-  }
-  
-  @-webkit-keyframes fadeInDown {
-    0% {
-      opacity: 0;
-      -webkit-transform: translate3d(0, -100%, 0);
-      transform: translate3d(0, -100%, 0);
-    }
-    100% {
-      opacity: 1;
-      -webkit-transform: none;
-      transform: none;
-    }
-  }
-  
-  @keyframes fadeInDown {
-    0% {
-      opacity: 0;
-      -webkit-transform: translate3d(0, -100%, 0);
-      transform: translate3d(0, -100%, 0);
-    }
-    100% {
-      opacity: 1;
-      -webkit-transform: none;
-      transform: none;
-    }
-  }
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 150px 0;
+  background-color: #212529;
+}
 
-  #formContent {
-    -webkit-border-radius: 10px 10px 10px 10px;
-    border-radius: 10px 10px 10px 10px;
-    background: #fed136;
-    padding: 30px;
-    width: 90%;
-    max-width: 450px;
-    position: relative;
-    padding: 0px;
-    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    text-align: center;
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
   }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
 
-  input[type=button], input[type=submit], input[type=reset]  {
-    background-color: #212529;
-    border: none;
-    color: white;
-    padding: 15px 80px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    text-transform: uppercase;
-    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-    margin: 5px 20px 40px 20px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
   }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+#formContent {
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #fed136;
+  padding: 30px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 0px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  text-align: center;
+}
+input[type=button], input[type=submit], input[type=reset]  {
+  background-color: #212529;
+  border: none;
+  color: white;
+  padding: 15px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 15px 20px 40px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+input[type=submit]:disabled {
+  background-color: #5b5e61;
+  box-shadow: none;
+}
 
-  input[type=submit]:disabled {
-    background-color: #5b5e61;
-    box-shadow: none;
-  }
-  
-  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-    background-color: #5b5e61;
-  }
-  
-  input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
-    -moz-transform: scale(0.95);
-    -webkit-transform: scale(0.95);
-    -o-transform: scale(0.95);
-    -ms-transform: scale(0.95);
-    transform: scale(0.95);
-  }
-  
-  input[type=text], input[type=password] {
-    background-color: #f6f6f6;
-    border: none;
-    color: #0d0d0d;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 5px;
-    width: 85%;
-    border: 2px solid #f6f6f6;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-  }
-  
-  input[type=text]:focus, input[type=password]:focus {
-    background-color: #fff;
-    border: 2px solid #5a5a5a;
-  }
-  
-  input[type=text]::placeholder, input[type=password]::placeholder {
-    color: #cccccc;
-  }
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+  background-color: #5b5e61;
+}
 
-  @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+input[type=text], input[type=password] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #fff;
+  border: 2px solid #5a5a5a;
+}
+
+input[type=text]::placeholder, input[type=password]::placeholder {
+  color: #cccccc;
+}
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
@@ -136,7 +133,7 @@
 }
 
 .fadeIn.first {
-    padding-top: 30px;
+  padding-top: 30px;
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   animation-delay: 0.4s;
@@ -164,4 +161,17 @@
   height: 50px;
   padding: 0px;
   border-top: none;
+}
+
+.remember {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+.remember input {
+  width: 20px;
+  height: 20px;
+  margin: 5px 5px 15px 5px;
 }

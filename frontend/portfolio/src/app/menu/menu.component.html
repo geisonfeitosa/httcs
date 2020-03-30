@@ -74,7 +74,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="exampleFormControlFile1">Imagem</label>
+                                <label for="exampleFormControlFile1">Imagem (700 X 800)</label>
                                 <input type="file" class="form-control-file" name="imagem"
                                     (change)="changeListenerPortfolios($event)">
                             </div>
@@ -153,7 +153,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="exampleFormControlFile1">Imagem</label>
+                                <label for="exampleFormControlFile1">Imagem (200 X 200)</label>
                                 <input type="file" class="form-control-file" name="imagem"
                                     (change)="changeListenerQuemSomos($event)">
                             </div>
@@ -188,7 +188,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+    aria-hidden="true" (keyup.enter)="closeModal()">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">

@@ -160,4 +160,8 @@ export class MenuComponent implements OnInit {
     // }
   }
 
+  closeModal() {
+    $('#myModal').modal('hide');
+  }
+
 }

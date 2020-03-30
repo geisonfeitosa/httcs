@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   quemSomos = new QuemSomos();
   
   ngOnInit(): void {
-    localStorage.clear();
+    localStorage.removeItem('access_token');
     this.list();
   }
 
