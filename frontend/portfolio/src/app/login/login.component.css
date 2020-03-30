@@ -58,8 +58,6 @@
     text-decoration: none;
     display: inline-block;
     text-transform: uppercase;
-    font-size: 13px;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
     box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
@@ -69,6 +67,11 @@
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+  }
+
+  input[type=submit]:disabled {
+    background-color: #5b5e61;
+    box-shadow: none;
   }
   
   input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
@@ -83,7 +86,7 @@
     transform: scale(0.95);
   }
   
-  input[type=text] {
+  input[type=text], input[type=password] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -104,12 +107,12 @@
     border-radius: 5px 5px 5px 5px;
   }
   
-  input[type=text]:focus {
+  input[type=text]:focus, input[type=password]:focus {
     background-color: #fff;
     border: 2px solid #5a5a5a;
   }
   
-  input[type=text]:placeholder {
+  input[type=text]::placeholder, input[type=password]::placeholder {
     color: #cccccc;
   }
 
@@ -137,4 +140,28 @@
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   animation-delay: 0.4s;
+}
+
+.btn-modal {
+  margin: 0 15px 10px;
+  background-color: #212529;
+  border-color: #212529;
+  color: #fed136 !important;
+  font-weight: 700;
+}
+
+.btn-modal:hover {
+  background-color: #fed136;
+  border-color: #fed136;
+  color: #212529 !important;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  height: 50px;
+  padding: 0px;
+  border-top: none;
 }

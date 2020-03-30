@@ -1,3 +1,10 @@
+.logo {
+    color: #fed136 !important;
+    font-size: 2em;
+    line-height: 0px;
+    font-family: 'Libre Barcode 39 Text', cursive;
+}
+
 .btn {
     margin: 20px 0px 10px;
     color: #212529 !important;
@@ -47,7 +54,7 @@ h2 {
     border-bottom: 0px;
 }
 
-label {
+label, .form-control-file {
     color: #ffffff;
 }
 
@@ -65,4 +72,27 @@ label {
 
 .list {
     padding: 10px;
+}
+
+.btn-modal {
+  margin: 0 15px 10px;
+  background-color: #212529;
+  border-color: #212529;
+  color: #fed136 !important;
+}
+
+.btn-modal:hover {
+  background-color: #fed136;
+  border-color: #fed136;
+  color: #212529 !important;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    height: 50px;
+    padding: 0px;
+    border-top: none;
 }

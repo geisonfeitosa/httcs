@@ -9,15 +9,35 @@
 
     <!-- Icon -->
     <div class="fadeIn first">
-        <h1>HTTCs</h1>
+      <a style="font-size: 3em; font-family: 'Libre Barcode 39 Text', cursive;">HTTCs</a>
     </div>
 
     <!-- Login Form -->
     <form>
-      <input type="text" id="login" class="fadeIn" name="login" placeholder="Email">
-      <input type="text" id="password" class="fadeIn" name="login" placeholder="Senha">
-      <input type="submit" class="fadeIn fourth" value="Entrar">
+      <input type="text" id="login" class="fadeIn" name="email" [(ngModel)]="usuario.email" (keyup.enter)="logar()" placeholder="Email">
+      <input type="password" id="password" class="fadeIn" name="senha" [(ngModel)]="usuario.senha" (keyup.enter)="logar()" placeholder="Senha">
+      <input type="submit" class="fadeIn fourth" (click)="logar()" value="Entrar" [disabled]="!usuario.email || !usuario.senha">
     </form>
 
   </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    <div id="msgT"></div>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="msgC"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-modal btn-primary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
 </div>

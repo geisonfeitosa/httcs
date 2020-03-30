@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfoliosService } from '../services/portfolios.service';
 import { Portfolio } from '../menu/portfolio';
+import { QuemSomos } from '../menu/quemSomos';
+import { QuemSomosService } from '../services/quemSomos.service';
 
 @Component({
   selector: 'p-home',
@@ -10,21 +12,30 @@ import { Portfolio } from '../menu/portfolio';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private portfoliosService: PortfoliosService
+    private portfoliosService: PortfoliosService,
+    private quemSomosService: QuemSomosService,
   ) { }
 
   title = 'portfolio';
+
   portfolios = [];
+  quemSomosList = [];
+
   portfolio = new Portfolio();
+  quemSomos = new QuemSomos();
   
   ngOnInit(): void {
-    this.listPortfolios();
+    localStorage.clear();
+    this.list();
   }
 
-  listPortfolios() {
-    this.portfoliosService.listPortfolios().subscribe(r=> {
-      this.portfolios = r;
+  list() {
+    this.portfoliosService.listPortfolios().subscribe(p=> {
+      this.portfolios = p;
     });
+    this.quemSomosService.listQuemSomos().subscribe(q=> {
+      this.quemSomosList = q;
+    })
   }
 
   openModal(portfolio) {

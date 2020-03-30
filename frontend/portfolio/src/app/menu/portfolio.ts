@@ -3,5 +3,5 @@ export class Portfolio {
     descricao: '';
     linkRepositorio: '';
     linkAplicacao: '';
-    imagem: ''
+    imagem: string
 }

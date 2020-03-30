@@ -6,20 +6,20 @@ import { environment } from '../../environments/environment';
 const SERVICE = environment.apiUrl;
 
 @Injectable()
-export class PortfoliosService {
+export class QuemSomosService {
 
     constructor(private http: HttpClient) { }
 
-    save(portfolio): Observable<any> {
-        return this.http.post(`${SERVICE}/projeto`, portfolio);
+    save(quemSomos): Observable<any> {
+        return this.http.post(`${SERVICE}/quem-somos`, quemSomos);
     }
 
-    listPortfolios(): Observable<any> {
-        return this.http.get(`${SERVICE}/projeto`);
+    listQuemSomos(): Observable<any> {
+        return this.http.get(`${SERVICE}/quem-somos`);
     }
 
     delete(id) {
-        return this.http.delete(`${SERVICE}/projeto/${id}`);
+        return this.http.delete(`${SERVICE}/quem-somos/${id}`);
     }
 
 }

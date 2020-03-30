@@ -1,10 +1,7 @@
 <div style="background-color: #212529">
     <nav class="navbar navbar-dark bg-dark">
+        <a class="logo" [routerLink]="['/']">HTTCs</a>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link" id="servicos-tab" data-toggle="tab" href="#servicos" role="tab"
-                    aria-controls="servicos" aria-selected="true">Serviços</a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link active" id="portfolios-tab" data-toggle="tab" href="#portfolios" role="tab"
                     aria-controls="servicos" aria-selected="true">Portfolios</a>
@@ -13,19 +10,15 @@
                 <a class="nav-link" id="quemSomos-tab" data-toggle="tab" href="#quemSomos" role="tab"
                     aria-controls="quemSomos" aria-selected="false">Quem somos</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="equipe-tab" data-toggle="tab" href="#equipe" role="tab" aria-controls="equipe"
-                    aria-selected="false">Equipe</a>
-            </li>
         </ul>
     </nav>
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade" id="servicos" role="tabpanel" aria-labelledby="servicos-tab">...</div>
+        <!-- Portfolios -->
         <div class="tab-pane fade show active" id="portfolios" role="tabpanel" aria-labelledby="portfolios-tab">
             <h2>Portfólios</h2>
-            <form class="list" *ngIf="!novo">
+            <form class="list" *ngIf="!novoPortfolio">
                 <div class="input-group">
-                    <button type="submit" class="btn btn-primary" (click)="novo=true">Novo</button>
+                    <button type="submit" class="btn btn-primary" (click)="novoPortfolio=true">Novo</button>
                 </div>
                 <table class="table table-hover table-dark">
                     <thead>
@@ -40,16 +33,16 @@
                             <td style="width: 200px">
                                 <div class="form-inline">
                                     <button type="submit" class="btn btn-outline btn-list"
-                                        (click)="editar(p)">Editar</button>&nbsp;&nbsp;
+                                        (click)="editarPortfolio(p)">Editar</button>&nbsp;&nbsp;
                                     <button type="submit" class="btn btn-primary btn-list"
-                                        (click)="delete(p.id)">Excluir</button>
+                                        (click)="deletePortfolio(p.id)">Excluir</button>
                                 </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </form>
-            <form class="novo" *ngIf="novo">
+            <form class="novo" *ngIf="novoPortfolio">
                 <div class="form-group">
                     <label>Título</label>
                     <input type="email" class="form-control" name="titulo" [(ngModel)]="portfolio.titulo">
@@ -77,20 +70,138 @@
                         </div>
                     </div>
                 </form>
-                <div class="form-group">
-                    <label for="exampleFormControlFile1">Imagem</label>
-                    <input type="file" class="form-control-file" name="imagem" [(ngModel)]="portfolio.imagem">
-                </div>
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">Imagem</label>
+                                <input type="file" class="form-control-file" name="imagem"
+                                    (change)="changeListenerPortfolios($event)">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" *ngIf="portfolio.imagem">
+                                <label>Imagem escolhida</label><br>
+                                <img class="img-fluid" [src]="portfolio.imagem" alt="" style="width: 100px">
+                            </div>
+                        </div>
+                    </div>
+                </form>
                 <div class="form-inline">
-                    <button type="submit" class="btn btn-outline" (click)="novo=false">Cancelar</button>&nbsp;&nbsp;
-                    <button type="submit" class="btn btn-primary" (click)="save()" disabled
-                    *ngIf="!validarCampos()">Salvar</button>
-                    <button type="submit" class="btn btn-primary" (click)="save()"
-                    *ngIf="validarCampos()">Salvar</button>
+                    <button type="submit" class="btn btn-outline" (click)="cancelarPortfolio()"
+                        *ngIf="!salvando">Cancelar</button>&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-outline" (click)="cancelarPortfolio()" disabled
+                        *ngIf="validarCamposPortfolio() && salvando">Cancelar</button>&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-primary" (click)="savePortfolio()" disabled
+                        *ngIf="!validarCamposPortfolio() && !salvando">Salvar</button>
+                    <button type="submit" class="btn btn-primary" (click)="savePortfolio()"
+                        *ngIf="validarCamposPortfolio() && !salvando">Salvar</button>
+                    <button type="submit" class="btn btn-primary" (click)="savePortfolio()" disabled
+                        *ngIf="validarCamposPortfolio() && salvando">
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                        Salvando...
+                    </button>
                 </div>
             </form>
         </div>
-        <div class="tab-pane fade" id="quemSomos" role="tabpanel" aria-labelledby="quemSomos-tab">...</div>
-        <div class="tab-pane fade" id="equipe" role="tabpanel" aria-labelledby="equipe-tab">...</div>
+        <!-- Quem somos -->
+        <div class="tab-pane fade" id="quemSomos" role="tabpane2" aria-labelledby="quemSomos-tab">
+            <h2>Quem Somos</h2>
+            <form class="list" *ngIf="!novoQuemSomos">
+                <div class="input-group">
+                    <button type="submit" class="btn btn-primary" (click)="novoQuemSomos=true">Novo</button>
+                </div>
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ano</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let q of quemSomosList">
+                        <tr>
+                            <td>{{q.ano}}</td>
+                            <td>{{q.titulo}}</td>
+                            <td style="width: 200px">
+                                <div class="form-inline">
+                                    <button type="submit" class="btn btn-outline btn-list"
+                                        (click)="editarQuemSomos(q)">Editar</button>&nbsp;&nbsp;
+                                    <button type="submit" class="btn btn-primary btn-list"
+                                        (click)="deleteQuemSomos(q.id)">Excluir</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            <form class="novo" *ngIf="novoQuemSomos">
+                <div class="form-group">
+                    <label>Ano</label>
+                    <input type="number" class="form-control" name="ano" [(ngModel)]="quemSomos.ano">
+                </div>
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="email" class="form-control" name="titulo" [(ngModel)]="quemSomos.titulo">
+                </div>
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea class="form-control" rows="3" name="descricao"
+                        [(ngModel)]="quemSomos.descricao"></textarea>
+                </div>
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">Imagem</label>
+                                <input type="file" class="form-control-file" name="imagem"
+                                    (change)="changeListenerQuemSomos($event)">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" *ngIf="quemSomos.imagem">
+                                <label>Imagem escolhida</label><br>
+                                <img class="img-fluid" [src]="quemSomos.imagem" alt="" style="width: 100px">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="form-inline">
+                    <button type="submit" class="btn btn-outline" (click)="cancelarQuemSomos()"
+                        *ngIf="!salvando">Cancelar</button>&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-outline" (click)="cancelarQuemSomos()" disabled
+                        *ngIf="validarCamposQuemSomos() && salvando">Cancelar</button>&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-primary" (click)="saveQuemSomos()" disabled
+                        *ngIf="!validarCamposQuemSomos() && !salvando">Salvar</button>
+                    <button type="submit" class="btn btn-primary" (click)="saveQuemSomos()"
+                        *ngIf="validarCamposQuemSomos() && !salvando">Salvar</button>
+                    <button type="submit" class="btn btn-primary" (click)="saveQuemSomos()" disabled
+                        *ngIf="validarCamposQuemSomos() && salvando">
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                        Salvando...
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    <div id="msgT"></div>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="msgC"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-modal btn-primary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
     </div>
 </div>
