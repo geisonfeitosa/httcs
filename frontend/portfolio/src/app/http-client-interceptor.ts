@@ -29,9 +29,9 @@ export class AuthInterceptor implements HttpInterceptor {
             (err: any) => {
                 console.log(err.status);
                 if (err instanceof HttpErrorResponse) {
-                    if (err.status === 401 || err.status === 403) {
+                    if (err.status === 403) {
                         localStorage.removeItem('access_token');
-                        window.location.reload();
+                        // window.location.reload();
                     }
                 }
             }));

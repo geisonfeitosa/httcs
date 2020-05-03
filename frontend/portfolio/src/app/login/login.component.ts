@@ -44,6 +44,8 @@ export class LoginComponent implements OnInit {
       this.usuario = {email:'', senha:''};
       this.router.navigate(['/menu']);
     }, err=> {
+      this.logando = false;
+      this.botao = "Entrar";
       let erro = JSON.parse(err.error);
       $('#myModal').modal('show');
       document.getElementById('msgT').innerHTML = "Erro!";

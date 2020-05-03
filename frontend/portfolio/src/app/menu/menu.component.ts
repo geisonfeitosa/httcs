@@ -41,16 +41,6 @@ export class MenuComponent implements OnInit {
       this.loginService.validar().subscribe(r=> {
         this.list();
       });
-      // this.loginService.validar(token).subscribe(r=> {
-      //   if(!r) {
-      //     localStorage.removeItem('access_token');
-      //     this.router.navigate(['/login']);
-      //   } else {
-      //     this.list();
-      //     this.novoPortfolio = false;
-      //     this.novoQuemSomos = false;
-      //   }
-      // });
     } else {
       localStorage.removeItem('access_token');
       this.router.navigate(['/login']);
@@ -104,6 +94,9 @@ export class MenuComponent implements OnInit {
       this.portfolio = new Portfolio();
       this.novoPortfolio = false;
       this.list();
+    }, ()=> {
+      this.salvando = false;
+      this.list();
     });
   }
 
@@ -116,6 +109,9 @@ export class MenuComponent implements OnInit {
       document.getElementById('msgC').innerHTML = "O dado foi salvo com sucesso.";
       this.quemSomos = new QuemSomos();
       this.novoQuemSomos = false;
+      this.list();
+    }, ()=> {
+      this.salvando = false;
       this.list();
     });
   }
