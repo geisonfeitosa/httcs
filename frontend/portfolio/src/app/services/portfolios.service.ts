@@ -11,15 +11,15 @@ export class PortfoliosService {
     constructor(private http: HttpClient) { }
 
     save(portfolio): Observable<any> {
-        return this.http.post(`${SERVICE}/projeto`, portfolio);
+        return this.http.post(`${SERVICE}/rest/projeto`, portfolio);
     }
 
     listPortfolios(): Observable<any> {
-        return this.http.get(`${SERVICE}/projeto`);
+        return this.http.get(`${SERVICE}/rest/projeto`);
     }
 
     delete(id) {
-        return this.http.delete(`${SERVICE}/projeto/${id}`);
+        return this.http.delete(`${SERVICE}/rest/projeto/${id}`);
     }
 
 }

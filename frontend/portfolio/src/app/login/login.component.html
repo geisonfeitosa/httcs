@@ -16,10 +16,11 @@
     <form>
       <input type="text" id="login" class="fadeIn" name="email" [(ngModel)]="usuario.email" (keyup.enter)="logar()" placeholder="Email">
       <input type="password" id="password" class="fadeIn" name="senha" [(ngModel)]="usuario.senha" (keyup.enter)="logar()" placeholder="Senha">
-      <div class="row remember">
-        <input type="checkbox" (change)="lembrar()" name="lembrar" [ngModel]="lembrarDados" [disabled]="!usuario.email || !usuario.senha"><label>Lembrar meus dados</label>
+      <div class="row remember fadeIn">
+        <input type="checkbox" (change)="lembrar()" name="lembrar" [ngModel]="lembrarDados" [disabled]="!usuario.email || !usuario.senha || logando"><label>Lembrar meus dados</label>
       </div>
-      <input type="submit" class="fadeIn fourth" (click)="logar()" value="Entrar" [disabled]="!usuario.email || !usuario.senha">
+      <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" *ngIf="logando"></span><br>
+      <input type="submit" class="fadeIn fourth" (click)="logar()" [value]="botao" [disabled]="!usuario.email || !usuario.senha">
     </form>
 
   </div>

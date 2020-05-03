@@ -7,26 +7,53 @@
 
 .btn {
     margin: 20px 0px 10px;
-    color: #212529 !important;
-    display: flex;
-    justify-content: right;
+    color: #212529;
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: column !important;
+    justify-content: right !important;
+    min-width: 80px;
+}
+
+.btn-salvando {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 700;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    margin: 20px 0px 10px;
+    color: #212529;
+    display: flex !important;
+    justify-content: right !important;
+    min-width: 80px;
 }
 
 .btn-list {
     float:left;
     margin: 0 0 0 0 !important;
-    color: #212529 !important;
-    display: flex;
-    justify-content: right;
 }
 
 .btn-outline {
-    border-color: #fed136 !important;
-    color: #fed136 !important;
+  background-color: #212529 !important;
+  border-color: #fed136 !important;
+  color: #fed136 !important;
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
-    color: #fff;
+    color: #fff !important;
     background-color: #685c31 !important;
     border-color: #685c31  !important;
 }
@@ -76,14 +103,11 @@ label, .form-control-file {
 
 .btn-modal {
   margin: 0 15px 10px;
-  background-color: #212529;
-  border-color: #212529;
-  color: #fed136 !important;
 }
 
 .btn-modal:hover {
-  background-color: #fed136;
-  border-color: #fed136;
+  background-color: #fed136 !important;
+  border-color: #fed136 !important;
   color: #212529 !important;
 }
 

@@ -21,7 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
             request = request.clone({
                 setHeaders: {
                     'Content-Type': 'application/json',
-                    Authorization: `bearer ${access_token}`
+                    Authorization: `Bearer ${access_token}`
                 }
             });
         }
@@ -29,9 +29,9 @@ export class AuthInterceptor implements HttpInterceptor {
             (err: any) => {
                 console.log(err.status);
                 if (err instanceof HttpErrorResponse) {
-                    if (err.status === 401) {
+                    if (err.status === 401 || err.status === 403) {
                         localStorage.removeItem('access_token');
-                        this.router.navigate(['/login']);
+                        window.location.reload();
                     }
                 }
             }));

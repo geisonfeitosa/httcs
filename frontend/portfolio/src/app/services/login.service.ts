@@ -11,11 +11,11 @@ export class LoginService {
     constructor(private http: HttpClient) { }
 
     login(usuario): Observable<any> {
-        return this.http.post(`${SERVICE}/usuario/login`, usuario);
+        return this.http.post(`${SERVICE}/login`, usuario, {observe: 'response', responseType: 'text'});
     }
 
-    validar(token): Observable<any> {
-        return this.http.post(`${SERVICE}/token/validar`, token);
+    validar(): Observable<any> {
+        return this.http.get(`${SERVICE}/rest/token/validar`);
     }
 
 }

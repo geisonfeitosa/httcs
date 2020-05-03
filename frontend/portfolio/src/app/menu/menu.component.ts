@@ -33,20 +33,24 @@ export class MenuComponent implements OnInit {
   quemSomos = new QuemSomos();
 
   salvando = false;
+  idSelected;
 
   ngOnInit(): void {
     let token = localStorage.getItem('access_token');
     if(token != null && token != '') {
-      this.loginService.validar(token).subscribe(r=> {
-        if(!r) {
-          localStorage.removeItem('access_token');
-          this.router.navigate(['/login']);
-        } else {
-          this.list();
-          this.novoPortfolio = false;
-          this.novoQuemSomos = false;
-        }
+      this.loginService.validar().subscribe(r=> {
+        this.list();
       });
+      // this.loginService.validar(token).subscribe(r=> {
+      //   if(!r) {
+      //     localStorage.removeItem('access_token');
+      //     this.router.navigate(['/login']);
+      //   } else {
+      //     this.list();
+      //     this.novoPortfolio = false;
+      //     this.novoQuemSomos = false;
+      //   }
+      // });
     } else {
       localStorage.removeItem('access_token');
       this.router.navigate(['/login']);
@@ -100,11 +104,6 @@ export class MenuComponent implements OnInit {
       this.portfolio = new Portfolio();
       this.novoPortfolio = false;
       this.list();
-    }, err=> {
-      this.salvando = false;
-      $('#myModal').modal('show');
-      document.getElementById('msgT').innerHTML = "Erro";
-      document.getElementById('msgC').innerHTML = err.message;
     });
   }
 
@@ -118,24 +117,37 @@ export class MenuComponent implements OnInit {
       this.quemSomos = new QuemSomos();
       this.novoQuemSomos = false;
       this.list();
-    }, err=> {
-      this.salvando = false;
-      $('#myModal').modal('show');
-      document.getElementById('msgT').innerHTML = "Erro";
-      document.getElementById('msgC').innerHTML = err.message;
     });
   }
 
   deletePortfolio(id) {
-    this.portfoliosService.delete(id).subscribe(r => {
+    this.idSelected = id;
+    $('#modalExcluirPortfolio').modal('show');
+    document.getElementById('msgTP').innerHTML = "Atenção!";
+    document.getElementById('msgCP').innerHTML = "O dado será permanentemente excluido.";
+  }
+    
+  confirmDeletePortfolio() {
+    this.portfoliosService.delete(this.idSelected).subscribe(r => {
+      this.closeModal();
+      this.idSelected = '';
       this.list();
-    })
+    });
   }
 
   deleteQuemSomos(id) {
-    this.quemSomosService.delete(id).subscribe(r => {
+    this.idSelected = id;
+    $('#modalExcluirQuemSomos').modal('show');
+    document.getElementById('msgTQ').innerHTML = "Atenção!";
+    document.getElementById('msgCQ').innerHTML = "O dado será permanentemente excluido.";
+  }
+
+  confirmDeleteQuemSomos() {
+    this.quemSomosService.delete(this.idSelected).subscribe(r => {
+      this.closeModal();
+      this.idSelected = '';
       this.list();
-    })
+    });
   }
 
   editarPortfolio(portfolio) {
@@ -166,6 +178,9 @@ export class MenuComponent implements OnInit {
 
   closeModal() {
     $('#myModal').modal('hide');
+    $('#modalExcluirPortfolio').modal('hide');
+    $('#modalExcluirQuemSomos').modal('hide');
+    this.idSelected = '';
   }
 
 }

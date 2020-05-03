@@ -96,7 +96,7 @@
                         *ngIf="!validarCamposPortfolio() && !salvando">Salvar</button>
                     <button type="submit" class="btn btn-primary" (click)="savePortfolio()"
                         *ngIf="validarCamposPortfolio() && !salvando">Salvar</button>
-                    <button type="submit" class="btn btn-primary" (click)="savePortfolio()" disabled
+                    <button type="submit" class="btn-salvando btn-primary" (click)="savePortfolio()" disabled
                         *ngIf="validarCamposPortfolio() && salvando">
                         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                         Salvando...
@@ -171,11 +171,11 @@
                         *ngIf="!salvando">Cancelar</button>&nbsp;&nbsp;
                     <button type="submit" class="btn btn-outline" (click)="cancelarQuemSomos()" disabled
                         *ngIf="validarCamposQuemSomos() && salvando">Cancelar</button>&nbsp;&nbsp;
-                    <button type="submit" class="btn btn-primary" (click)="saveQuemSomos()" disabled
+                    <button type="submit" class="btn btn btn-primary" (click)="saveQuemSomos()" disabled
                         *ngIf="!validarCamposQuemSomos() && !salvando">Salvar</button>
                     <button type="submit" class="btn btn-primary" (click)="saveQuemSomos()"
                         *ngIf="validarCamposQuemSomos() && !salvando">Salvar</button>
-                    <button type="submit" class="btn btn-primary" (click)="saveQuemSomos()" disabled
+                    <button type="submit" class="btn-salvando btn-primary" (click)="saveQuemSomos()" disabled
                         *ngIf="validarCamposQuemSomos() && salvando">
                         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                         Salvando...
@@ -201,6 +201,48 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-modal btn-primary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal excluir portfolio -->
+<div class="modal fade" id="modalExcluirPortfolio" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    <div id="msgTP"></div>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="msgCP"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-modal btn-outline" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-modal btn-primary" (click)="confirmDeletePortfolio()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal excluir quem somos -->
+<div class="modal fade" id="modalExcluirQuemSomos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    <div id="msgTQ"></div>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="msgCQ"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-modal btn-outline" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-modal btn-primary" (click)="confirmDeleteQuemSomos()">Ok</button>
             </div>
         </div>
     </div>

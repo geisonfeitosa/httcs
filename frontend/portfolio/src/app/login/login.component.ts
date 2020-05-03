@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   ) { }
   usuario = {email:'', senha:''};
   lembrarDados = false;
+  logando = false;
+  botao = "Entrar";
 
   ngOnInit() {
     this.usuario.email = localStorage.getItem('email');
@@ -31,17 +33,21 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
+    this.logando = true;
+    this.botao = "Logando...";
     localStorage.removeItem('access_token');
     this.loginService.login(this.usuario).subscribe(r=> {
-      if(r.access_token != undefined) {
-        localStorage.setItem('access_token', r.access_token);
-        this.usuario = {email:'', senha:''};
-        this.router.navigate(['/menu']);
-      } else {
-        $('#myModal').modal('show');
-        document.getElementById('msgT').innerHTML = "Erro!";
-        document.getElementById('msgC').innerHTML = "Email ou senha incorretos.";
-      }
+      let access_token = r.headers.get('Authorization').replace("Bearer ", '');
+      this.logando = false;
+      this.botao = "Entrar";
+      localStorage.setItem('access_token', access_token);
+      this.usuario = {email:'', senha:''};
+      this.router.navigate(['/menu']);
+    }, err=> {
+      let erro = JSON.parse(err.error);
+      $('#myModal').modal('show');
+      document.getElementById('msgT').innerHTML = "Erro!";
+      document.getElementById('msgC').innerHTML = `${erro.message}`;
     })
   }
 
