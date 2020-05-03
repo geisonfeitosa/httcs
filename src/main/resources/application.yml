@@ -14,4 +14,4 @@ spring:
         
 jwt:
   secret: meiamesaetrescadeirashttcs
-  expiration: 60000
+  expiration: 300000
