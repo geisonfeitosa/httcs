@@ -36,9 +36,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
     public void configure(HttpSecurity http) throws Exception {
-		http.cors().and().csrf().disable();
+		http.csrf().disable();
         http.authorizeRequests()
-        .antMatchers("/v2/api-docs",
+        .antMatchers(
+        		"/api/v1/orders",
+        		"/v2/api-docs",
                 "/configuration/ui",
                 "/swagger-resources/**",
                 "/configuration/security",
